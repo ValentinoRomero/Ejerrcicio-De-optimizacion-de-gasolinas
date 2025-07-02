@@ -1,0 +1,114 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "name": "Debug Backend (NestJS)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/src/main.ts",
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [],
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "3001"
+      },
+      "console": "integratedTerminal",
+      "restart": true,
+      "protocol": "inspector",
+      "port": 9229,
+      "cwd": "${workspaceFolder}/backend",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/backend/dist/**/*.js"],
+      "skipFiles": [
+        "<node_internals>/**",
+        "node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug Frontend (React)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/frontend/src",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      },
+      "preLaunchTask": "start-frontend",
+      "userDataDir": false
+    },
+    {
+      "name": "Debug Full Stack",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/src/main.ts",
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [],
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "3001"
+      },
+      "console": "integratedTerminal",
+      "restart": true,
+      "protocol": "inspector",
+      "port": 9229,
+      "cwd": "${workspaceFolder}/backend",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/backend/dist/**/*.js"],
+      "skipFiles": [
+        "<node_internals>/**",
+        "node_modules/**"
+      ],
+      "preLaunchTask": "start-frontend"
+    },
+    {
+      "name": "Debug Watson Service",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/test-watson.js",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/backend",
+      "skipFiles": [
+        "<node_internals>/**",
+        "node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug List Assets",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/list-assets.js",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/backend",
+      "skipFiles": [
+        "<node_internals>/**",
+        "node_modules/**"
+      ]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Backend + Frontend",
+      "configurations": [
+        "Debug Backend (NestJS)",
+        "Debug Frontend (React)"
+      ],
+      "stopAll": true
+    }
+  ]
+} 

@@ -1,0 +1,29 @@
+{
+  "name": "energiafina-optimizacion",
+  "version": "1.0.0",
+  "description": "Sistema de optimización de producción de gasolinas para EnergíaFina S.A.",
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run start:dev",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "cd backend && npm run build && cd ../frontend && npm run build",
+    "start": "cd backend && npm run start:prod"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "nestjs",
+    "react",
+    "watson",
+    "optimization",
+    "oil",
+    "gasoline"
+  ],
+  "author": "EnergíaFina S.A.",
+  "license": "MIT",
+  "dependencies": {
+    "csv-stringify": "^6.5.2"
+  }
+}
